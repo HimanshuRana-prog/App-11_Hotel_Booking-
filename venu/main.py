@@ -5,6 +5,7 @@ df_cards = pd.read_csv("cards.csv",dtype = str).to_dict(orient="records")
 df_cards_security = pd.read_csv("card_security.csv",dtype=str)
 
 class Hotel:
+    watermark = "The Real Estate Company"
     def __init__(self, hotel_id):
         self.hotel_id = hotel_id
         self.name = df.loc[df["id"] == self.hotel_id, "name"].squeeze()
@@ -23,9 +24,7 @@ class Hotel:
         else:
              return False
 
-class SpaHotel(Hotel):
-    def book_spa_package(self):
-        pass
+
 
 
 class ReservationTicket:
@@ -41,6 +40,20 @@ class ReservationTicket:
         Hotel name:{self.hotel.name}
         """
         return content
+    
+hotel1 = Hotel(hotel_id = "188")
+hotel2 = Hotel(hotel_id = "134")
+
+print(hotel1.name)
+print(hotel2.name)
+
+print(hotel1.watermark)
+print(hotel2.watermark)
+
+print(Hotel.watermark)
+print(Hotel.name)
+
+
 
 class CreditCard:
     def __init__(self, number):
